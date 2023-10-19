@@ -1,15 +1,14 @@
+
+
 defmodule Practice do
 
   # iex -S mix : to run this module
   # example <Module_Name>.<function_Name>
 
-  @spec start :: :ok
-  def start do
+  def timed(func,args) do
+    {time,result} = :timer.tc(func,args)
 
-    #response = IO.gets("You are idiot? y or n")
-    #IO.puts("Your answer #{response}")
-
-    :ok
-
+    IO.puts "Time: #{time}\nResult: "
+    IO.inspect result
   end
 end
