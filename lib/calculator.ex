@@ -13,7 +13,9 @@ defmodule Calculator do
     end
   end
 
-  @spec escupir(String) :: String
-  def escupir(letra), do: letra
+  def sum(a,b) do
+    :timer.sleep(1_000)
+    a+b
+  end
 
 end
