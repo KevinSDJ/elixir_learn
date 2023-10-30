@@ -1,1 +1,1 @@
-confg :logger,backends: [:console], compile_time_purge_level: :debug
+confg(:logger, backends: [:console], compile_time_purge_level: :debug)

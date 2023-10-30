@@ -8,50 +8,48 @@ defmodule BasesTest do
   test "test pipe operator" do
     # la salida de una funcion se lo paso como parametro a otra funcion
     # con el operador pipe
-    assert "demo" |> String.upcase == "DEMO"
+    assert "demo" |> String.upcase() == "DEMO"
   end
-  test "test funcion anonima con atajo : &" do
 
-    sum= &(&1+4)
-    assert sum.(4)==8
+  test "test funcion anonima con atajo : &" do
+    sum = &(&1 + 4)
+    assert sum.(4) == 8
   end
 
   test "test anonymus function normal" do
-
-    sum= fn value -> value + 20 end
-    assert sum.(10)==30
+    sum = fn value -> value + 20 end
+    assert sum.(10) == 30
   end
 
   test "test sigilo " do
-
     e = ~r/oasd,asdsa/
 
-    assert "oasd,asdsa"=~ e
+    assert "oasd,asdsa" =~ e
   end
 
   test "test date in elixir" do
-    {{year,month,day},{h,m,s}}= :calendar.local_time()
-    IO.puts "#{day}-#{month}-#{year}, #{h}:#{m}:#{s}"
+    {{year, month, day}, {h, m, s}} = :calendar.local_time()
+    IO.puts("#{day}-#{month}-#{year}, #{h}:#{m}:#{s}")
     assert true
-
   end
 
   test "File" do
-    {:ok,file}= File.open("README.md")
+    {:ok, file} = File.open("README.md")
+
     try do
-      IO.inspect file
+      IO.inspect(file)
     rescue
-      e -> IO.puts e
+      e -> IO.puts(e)
     after
       File.close(file)
     end
+
     assert true
   end
 
   test "Test custom error" do
     try do
-      if (2*2) == 4 do
-
+      if 2 * 2 == 4 do
         raise BadRequest
         assert true
       else
@@ -60,5 +58,9 @@ defmodule BasesTest do
     rescue
       e in BadRequest -> e
     end
+  end
+
+  test "Demo erlang" do
+    assert :erl_demo.sum(2,2) === 4
   end
 end

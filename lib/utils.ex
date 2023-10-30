@@ -32,24 +32,23 @@ defmodule Utils do
     end
   end
 
-  def filter([],_),do: []
+  def filter([], _), do: []
 
-  def filter(list,fun) do
-    [hd|tl]=list
+  def filter(list, fun) do
+    [hd | tl] = list
+
     if fun.(hd) do
-      [hd|filter(tl,fun)]
+      [hd | filter(tl, fun)]
     else
-      []++ filter(tl,fun)
+      [] ++ filter(tl, fun)
     end
   end
 
-  def filter_generator([],_fun),do: []
+  def filter_generator([], _fun), do: []
 
-  def filter_generator(list,fun) do
-
+  def filter_generator(list, fun) do
     for x <- list, fun.(x), do: x
   end
-  
-  def d(d) when d>0 , do: d
 
+  def d(d) when d > 0, do: d
 end
