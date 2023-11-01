@@ -17,7 +17,7 @@ defmodule Practice.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      extra_applications: [:cowboy, :plug, :logger],
+      extra_applications: [:plug_cowboy, :logger],
       mod: {Web.Main,[]}
     ]
   end
@@ -25,8 +25,8 @@ defmodule Practice.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:plug, "~>1.3.4"},
-      {:cowboy, "~>1.1.2"}
+      {:plug_cowboy, "~> 2.0"},
+      {:poison, "~> 5.0"}
       # {:dep_from_hexpm, "~> 1.1.0"}
     ]
   end

@@ -5,10 +5,11 @@ defmodule Web.Main do
   require Logger
 
   def start(_type,_args) do
-    children=[
-      Plug.Adapters.Cowboy.child_spec(:http,Web.Router,[],port: 8080)
-    ]
+    webserver={Plug.Cowboy,plug: Web.Endpoint,scheme: :http,options: [port: 8080]}
+    {:ok, _}=Supervisor.start_link([webserver],strategy: :one_for_one)
+
     Logger.info("Server run on port: 8080")
-    Supervisor.start_link(children,strategy: :one_for_one)
+
+    Process.sleep(:infinity)
   end
 end
